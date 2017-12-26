@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    # render json: @groups.as_json(include: :users, include: :creator)
   end
   def indexUserGroups
     @groups = @user.created_groups 

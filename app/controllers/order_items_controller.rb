@@ -5,9 +5,10 @@ class OrderItemsController < ApplicationController
   # GET /order_items
   # GET /order_items.json
   def index
-    @order_item = @order.order_items
+    @order_items = @order.order_items
     # render json: @order_item, status: :created
-   render json: @order_item.as_json(include: :item)
+   # render json: @order_item.as_json(include: :item)
+
   end
 
   # GET /order_items/1

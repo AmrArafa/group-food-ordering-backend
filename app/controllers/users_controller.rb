@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    # json: @users.as_json(include: :orders)
   end
 
   # GET /users/1
