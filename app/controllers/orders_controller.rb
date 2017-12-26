@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_user
-  before_action :set_order, only: [:show, :update, :destroy]
+  before_action :set_order, only: [:show, :showItem, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
     render json: @order, status: :ok
 
   end
+
+ 
 
   # POST /orders
   # POST /orders.json

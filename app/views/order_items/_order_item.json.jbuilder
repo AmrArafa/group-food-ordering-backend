@@ -1,0 +1,6 @@
+json.extract! order_item, :id, :order_id, :quantity, :created_at, :updated_at
+# json.url order_item_url(order_item, format: :json)
+# json.order_item do
+#     json.name @order_item.item.name
+#     json.extract!(@order_item, :id, :order_id, :item_id, :quantity, :created_at, :updated_at)
+# end
