@@ -13,10 +13,17 @@ class ItemsController < ApplicationController
     @item 
   end
 
+
   # POST /items
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    # @item.image = params[:file]
+    
+    p @item
+    # File.open('somewhere') do |f|
+    #   @item.image = f
+    # end
 
     if @item.save
       render :show, status: :created, location: @item
@@ -51,6 +58,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :image, :price)
+      params.permit(:name, :image, :price)
     end
 end
