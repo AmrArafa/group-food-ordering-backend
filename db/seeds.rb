@@ -46,21 +46,21 @@ Item.create(
     :image => 'https://www.getmumm.com/uploads/items/328x222/3141/4402.jpeg',
     :price => 61.00
     )
-User.create(
-    :first_name => 'Ahmed',
-    :last_name => 'Elanadoly',
-    :email => 'ahmedelanadoly@gmail.com'
-    )
-User.create(
-    :first_name => 'Moaz',
-    :last_name => 'Elnager',
-    :email => 'Moaz@gmail.com'
-    )
-User.create(
-    :first_name => 'Amr',
-    :last_name => 'Arafa',
-    :email => 'Amr@gmail.com'
-    )
+# User.create(
+#     :first_name => 'Ahmed',
+#     :last_name => 'Elanadoly',
+#     :email => 'ahmedelanadoly@gmail.com'
+#     )
+# User.create(
+#     :first_name => 'Moaz',
+#     :last_name => 'Elnager',
+#     :email => 'Moaz@gmail.com'
+#     )
+# User.create(
+#     :first_name => 'Amr',
+#     :last_name => 'Arafa',
+#     :email => 'Amr@gmail.com'
+#     )
 Group.create(
     :creator_id => 1
     )
@@ -82,7 +82,7 @@ Order.create(
     :user_id => 1,
     :group_id => 2
     )
-Oder.create(
+Order.create(
     :user_id => 2,
     :group_id => 2
     )
