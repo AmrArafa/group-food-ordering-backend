@@ -20,15 +20,15 @@ class OrderItemsController < ApplicationController
 
   # POST /order_items
   # POST /order_items.json
-  def create
-    @order_item = @order.order_items.build(order_item_params)
+  # def create
+  #   @order_item = @order.order_items.build(order_item_params)
 
-    if @order_item.save
-      render json: @order_item, status: :created #, location: @order_item
-    else
-      render json: @order_item.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @order_item.save
+  #     render json: @order_item, status: :created #, location: @order_item
+  #   else
+  #     render json: @order_item.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /order_items/1
   # PATCH/PUT /order_items/1.json
