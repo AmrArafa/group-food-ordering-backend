@@ -46,21 +46,21 @@ Item.create(
     :image => File.open(File.join(Rails.root, '/image/Meat_mombar_with_baba_ghanouj.jpg')),
     :price => 61.00
     )
-User.create(
-    :first_name => 'Ahmed',
-    :last_name => 'Elanadoly',
-    :email => 'ahmedelanadoly@gmail.com'
-    )
-User.create(
-    :first_name => 'Moaz',
-    :last_name => 'Elnager',
-    :email => 'Moaz@gmail.com'
-    )
-User.create(
-    :first_name => 'Amr',
-    :last_name => 'Arafa',
-    :email => 'Amr@gmail.com'
-    )
+# User.create(
+#     :first_name => 'Ahmed',
+#     :last_name => 'Elanadoly',
+#     :email => 'ahmedelanadoly@gmail.com'
+#     )
+# User.create(
+#     :first_name => 'Moaz',
+#     :last_name => 'Elnager',
+#     :email => 'Moaz@gmail.com'
+#     )
+# User.create(
+#     :first_name => 'Amr',
+#     :last_name => 'Arafa',
+#     :email => 'Amr@gmail.com'
+#     )
 Group.create(
     :creator_id => 1
     )
