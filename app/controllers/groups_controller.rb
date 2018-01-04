@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.active
     # render json: @groups.as_json(include: :users, include: :creator)
   end
   def indexUserGroups
@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = Group.new (group_params)
 
     if @group.save
       render :show, status: :created, location: @group
@@ -59,6 +59,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:creator_id, :time_frame)
+      params.require(:group).permit(:creator_id, :time_frame, orders_attributes: [:paid, :delivered, :user_id, order_items_attributes: [:item_id, :quantity]])
     end
 end

@@ -26,6 +26,7 @@ gem 'jwt'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+gem  'stripe'
 # User Carrier Wave for Uploaded image
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-base64'

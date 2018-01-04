@@ -6,6 +6,16 @@ Rails.application.routes.draw do
         resources :order_items, defaults: {format: :json}
     end
   end
+  
+  resources :users, defaults: {format: :json} do
+  	resources :groups, defaults: {format: :json}
+  end
+  
+  resources :orders, defaults: {format: :json}
+
+  resources :charges
+# get 'orderWithoutUser', to: 'orders#orderWithoutUser+'
+  
   resources :items, defaults: {format: :json}
   # resources :registrations, only: [:new, :create], defaults: {format: :json}
   post 'signup', to: 'registrations#create', defaults: {format: :json}
@@ -17,7 +27,7 @@ Rails.application.routes.draw do
     resources :items, defaults: {format: :json}
     resources :groups, defaults: {format: :json}
     resources :users, defaults: {format: :json} do
-    resources :orders, defaults: {format: :json} do
+      resources :orders, defaults: {format: :json} do
         resources :order_items, defaults: {format: :json}
       end
     end

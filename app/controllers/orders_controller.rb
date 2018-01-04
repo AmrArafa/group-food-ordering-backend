@@ -1,24 +1,26 @@
 class OrdersController < ApplicationController
   before_action :authenticate_request!
-  before_action :set_user
-  before_action :set_order, only: [:show, :showItem, :update, :destroy]
+  before_action :set_user, except: [:index, :show]
+  before_action :set_order, only: [:update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = @user.orders
+    @orders = if params[:user_id].present?
+                Order.of_user(params[:user_id])
+              else
+                Order.all
+              end
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = @user.orders.find(params[:id])
+    # @order = @user.orders.find(params[:id])
+    @order = Order.find(params[:id])
 
-    render json: @order, status: :ok
-
+    # render json: @order, status: :ok
   end
-
- 
 
   # POST /orders
   # POST /orders.json
@@ -27,7 +29,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       # render :show, status: :created, location: @order
-      render json: @order, status: :created
+      # render json: @order, status: :created
     else
       render json: @order.errors, status: :unprocessable_entity
     end
@@ -63,6 +65,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:paid, :delivered, :user_id, :group_id, order_items_attributes: [:quantity, :item_id])
+      params.require(:order).permit(:paid, :delivered, :user_id, :group_id, order_items_attributes: [:item_id, :quantity])
     end
 end
