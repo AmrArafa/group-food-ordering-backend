@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_request!
+  before_action :authenticate_request!, :current_user
   before_action :set_user, only: [:indexUserGroups]
   before_action :set_group, only: [:show, :update, :destroy]
 
@@ -23,12 +23,12 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new (group_params)
+    @group = @current_user.created_groups.build(group_params)
 
     if @group.save
       render :show, status: :created, location: @group
     else
-      render json: @group.errors, status: :unprocessable_entity
+      render json: @group.errors.full_messages, status: :unprocessable_entity
     end
   end
 

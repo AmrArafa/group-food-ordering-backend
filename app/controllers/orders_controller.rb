@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_request!
-  before_action :set_user, except: [:index, :show]
+  before_action :authenticate_request!, :current_user
+  before_action :set_user, except: [:index, :show, :create]
   before_action :set_order, only: [:update, :destroy]
 
   # GET /orders
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = @user.orders.build order_params
+    @order = @current_user.orders.build order_params
 
     if @order.save
       # render :show, status: :created, location: @order
