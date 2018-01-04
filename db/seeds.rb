@@ -46,6 +46,13 @@ Item.create(
     :image => File.open(File.join(Rails.root, '/image/Meat_mombar_with_baba_ghanouj.jpg')),
     :price => 61.00
     )
+Admin.create(
+    :first_name => 'Ahmed',
+    :last_name => 'Elanadoly',
+    :email => 'ahmedelanadoly@gmil.com',
+    :password => '123456789',
+    :password_confirmation => '123456789'
+    )
 # User.create(
 #     :first_name => 'Ahmed',
 #     :last_name => 'Elanadoly',
