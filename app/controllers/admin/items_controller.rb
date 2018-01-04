@@ -1,7 +1,8 @@
 class Admin::ItemsController < ApplicationController
     before_action :admin_authenticate_request!
     before_action :set_item, only: [:show, :update, :destroy]
-    def index
+   
+  def index
     @items = Item.all
   end
 
