@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_user, only: [:indexUserGroups]
   before_action :set_group, only: [:show, :update, :destroy]
 

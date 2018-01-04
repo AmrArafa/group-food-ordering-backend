@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_item, only: [:show, :update, :destroy]
 
   # GET /items
@@ -10,37 +11,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find params[:id]
-  end
-
-  # POST /items
-  # POST /items.json
-  def create
-    @item = Item.new(item_params)
-
-    if @item.save
-      render :show, status: :created, location: @item
-    else
-      render json: @item.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
-  def update
-    if @item.update(item_params)
-      render :show, status: :ok, location: @item
-    else
-      render json: @item.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /items/1
-  # DELETE /items/1.json
-  def destroy
-    @item.destroy
-
-    render json: { operation: 'OK' }, status: :ok
+    @item 
   end
 
   private
@@ -51,6 +22,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :image, :price)
+      params.permit(:name, :image, :price)
     end
 end

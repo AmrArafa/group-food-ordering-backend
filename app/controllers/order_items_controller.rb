@@ -1,4 +1,5 @@
 class OrderItemsController < ApplicationController
+  before_action :authenticate_request!
   before_action  :set_user, :set_order
   before_action :set_order_item, only: [:show, :update, :destroy]
 
