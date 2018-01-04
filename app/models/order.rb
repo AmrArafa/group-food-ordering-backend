@@ -12,4 +12,14 @@ class Order < ApplicationRecord
 
     validates :user_id,  presence: true
 
+
+
+    def calculate_total_price
+    	totalPrice = 0
+		for item in self.order_items 
+			totalPrice += ((item.item.price) * (item.quantity))
+		end	
+		return(totalPrice)
+	end
+
 end
