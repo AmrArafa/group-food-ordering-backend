@@ -8,11 +8,7 @@ class Order < ApplicationRecord
 
     scope :of_user, -> (id) { where(user_id: id) }
 
-    
-
     validates :user_id,  presence: true
-
-
 
     def calculate_total_price
     	totalPrice = 0
