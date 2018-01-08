@@ -21,9 +21,12 @@ Rails.application.routes.draw do
   post 'signup', to: 'registrations#create', defaults: {format: :json}
   post 'login', to: 'sessions#create', defaults: {format: :json}
   namespace :admin do
-    post 'signup', to: 'registrations#create', defaults: {format: :json}
+    get '/admins/:invitation_token', to: 'admins#showbytoken'
+    post 'invitations', to: 'invitations#create'
+    post 'registrations/:invitation_token', to: 'registrations#update', defaults: {format: :json}
     post 'login', to: 'sessions#create', defaults: {format: :json}
     get '/', to: 'admin#index'
+    resources :admins, defaults: {format: :json}
     resources :items, defaults: {format: :json}
     resources :groups, defaults: {format: :json}
     resources :users, defaults: {format: :json} do

@@ -49,9 +49,16 @@ Item.create(
 Admin.create(
     :first_name => 'Ahmed',
     :last_name => 'Elanadoly',
-    :email => 'ahmedelanadoly@gmil.com',
+    :email => 'ahmedelanadoly@gmail.com',
     :password => '123456789',
     :password_confirmation => '123456789'
+    )
+User.create(
+    :first_name => 'Ahmed',
+    :last_name => 'Elanadoly',
+    :email => 'ahmedelanadoly@gmil.com',
+    :password => '123456',
+    :password_confirmation => '123456'
     )
 # User.create(
 #     :first_name => 'Ahmed',
