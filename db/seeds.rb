@@ -113,7 +113,7 @@ OrderItem.create(
 OrderItem.create(
     :order_id => 1,
     :item_id => 3,
-    :quantity => 1
+    :quantity => 10
     )
 OrderItem.create(
     :order_id => 2,
