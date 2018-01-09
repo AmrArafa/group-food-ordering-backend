@@ -17,6 +17,15 @@ class Admin::OrdersController < ApplicationController
 
   end
 
+  def update
+    if @order.update_attributes(order_params)
+      render json: @order, status: :ok
+    else
+      render json: @order.errors, status: :unprocessable_entity
+    end
+
+  end
+
   def destroy
     @order.destroy
 

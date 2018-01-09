@@ -13,12 +13,40 @@ class Order < ApplicationRecord
     after_create :delete_unpaid_orders, :delete_unpaid_single_orders
 
     def calculate_total_price
-    	totalPrice = 0
-		for item in self.order_items 
-			totalPrice += ((item.item.price) * (item.quantity))
-		end	
-		return(totalPrice)
+        totalPrice = 0
+        for item in self.order_items 
+            totalPrice += ((item.item.price) * (item.quantity))
+        end 
+        return(totalPrice)
 	end
+    def self.total_sold
+        totalPrice = 0 
+        Order.all.each do |order|
+            totalPrice += order.calculate_total_price
+        end
+        return totalPrice
+    end
+    def self.total_sold_last_month
+        totalPrice = 0 
+        Order.where(created_at: 1.month.ago.beginning_of_day..Time.now).each do |order|
+            totalPrice += order.calculate_total_price
+        end
+        return totalPrice
+    end
+    def self.total_sold_last_day
+        totalPrice = 0 
+        Order.where(created_at: 1.day.ago..Time.now).each do |order|
+            totalPrice += order.calculate_total_price
+        end
+        return totalPrice
+    end
+    def self.total_sold_last_hour
+        totalPrice = 0 
+        Order.where(created_at: 1.hours.ago..Time.now).each do |order|
+            totalPrice += order.calculate_total_price
+        end
+        return totalPrice
+    end
 
 
     def delete_unpaid_orders
