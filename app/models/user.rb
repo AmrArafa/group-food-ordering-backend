@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     attr_accessor :password_confirmation
 
-    has_many :orders
+    has_many :orders, dependent: :destroy
     has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
     has_many :groups, through: :orders
 

@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
     
-    has_many :order_items, inverse_of: :item
-    has_many :orders, through: :order_items
+    has_many :order_items, inverse_of: :item, dependent: :destroy
+    has_many :orders, through: :order_items, dependent: :destroy
     
     mount_uploader :image, ImageUploader
     
