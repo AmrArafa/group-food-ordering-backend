@@ -8,12 +8,3 @@ json.extract! @group, :id, :time_frame, :creator_id, :created_at, :updated_at
     json.user_first_name user.first_name
     json.user_last_name user.last_name
   end
-
- #  json.orders @group.orders do |order|
-	# json.items order.order_items do |item|
-	# 	json.name item.item.name
- #    	json.price item.item.price
- #    	json.quantity item.quantity
- #    	end
- # end
-

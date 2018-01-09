@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_request!, :current_user
-  before_action :set_user, except: [:index, :show, :create]
+  before_action :set_user, except: [:index, :show, :create, :destroy, :update]
   before_action :set_order, only: [:update, :destroy]
 
   # GET /orders
@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = @user.orders.find(params[:id])
+      @order = Order.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
