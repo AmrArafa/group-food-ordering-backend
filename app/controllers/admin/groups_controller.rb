@@ -1,5 +1,5 @@
 class Admin::GroupsController < ApplicationController
-    before_action :admin_authenticate_request!
+  before_action :admin_authenticate_request!
   before_action :set_user, only: [:indexUserGroups]
   before_action :set_group, only: [:show, :update, :destroy]
 
@@ -15,7 +15,7 @@ class Admin::GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find params[:id]
+    @group
   end
   
 

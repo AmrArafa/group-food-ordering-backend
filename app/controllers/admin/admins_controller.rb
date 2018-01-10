@@ -1,13 +1,17 @@
 class Admin::AdminsController < ApplicationController
-  before_action :admin_authenticate_request!
+  before_action :admin_authenticate_request!, only: [:show, :update, :destroy, :index]
   before_action :set_admin, only: [:show, :update, :destroy]
 
   # GET /admins
   # GET /admins.json
   def index
-    @admins = Admin.all
+    @admins = Admin.where(invitation_token: nil)
   end
-
+  def showbytoken
+    @admin = Admin.find_by invitation_token: params[:invitation_token]
+    render json: @admin, status: :ok
+  end
+  
   # GET /admins/1
   # GET /admins/1.json
   def show
