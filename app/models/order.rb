@@ -50,7 +50,9 @@ class Order < ApplicationRecord
 
 
     def delete_unpaid_orders
-        if ((!self.group_id.nil?) && (self.paid == false)) 
+        puts 11111111111111111111111
+        puts self.paid
+        if !self.group_id.nil? && self.paid == false
              DeleteUnpaidOrdersJob.set(wait: 1.minute).perform_later(self) 
         end 
     end
