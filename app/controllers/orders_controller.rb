@@ -43,7 +43,9 @@ class OrdersController < ApplicationController
     else
       render json: @order.errors, status: :unprocessable_entity
     end
-
+    if @order.pay_online || @order.pay_on_delivery
+      OrderMailer.order_confirmation(@user.email, @user.first_name).deliver_now
+    end
   end
 
   # DELETE /orders/1
@@ -65,6 +67,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:paid, :delivered, :user_id, :group_id, order_items_attributes: [:item_id, :quantity])
+      params.require(:order).permit(:pay_online, :pay_on_delivery, :delivered, :user_id, :group_id, order_items_attributes: [:item_id, :quantity])
     end
 end
