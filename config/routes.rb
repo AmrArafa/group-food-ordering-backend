@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'registrations#create', defaults: {format: :json}
   post 'login', to: 'sessions#create', defaults: {format: :json}
   namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
     get 'mostitem', to: 'dashboard#mostItem'
     get 'lessitem', to: 'dashboard#lessItem'
     get 'mostuser', to: 'dashboard#mostUser'
@@ -37,11 +38,8 @@ Rails.application.routes.draw do
     resources :admins, defaults: {format: :json}
     resources :items, defaults: {format: :json}
     resources :groups, defaults: {format: :json}
-    resources :users, defaults: {format: :json} do
-      resources :orders, defaults: {format: :json} do
-        resources :order_items, defaults: {format: :json}
-      end
-    end
+    resources :orders, defaults: {format: :json}
+    resources :users, defaults: {format: :json}
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
