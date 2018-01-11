@@ -60,6 +60,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:creator_id, :time_frame, orders_attributes: [:paid, :delivered, :user_id, order_items_attributes: [:item_id, :quantity]])
+      params.require(:group).permit(:creator_id, :time_frame, orders_attributes: [:paid_online, :will_pay_on_delivery, :paid_on_delivery, :delivered, :user_id, order_items_attributes: [:item_id, :quantity]])
     end
 end

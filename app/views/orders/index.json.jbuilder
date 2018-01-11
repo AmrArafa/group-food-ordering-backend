@@ -1,6 +1,8 @@
 json.array! @orders do |order|
     json.id order.id
-    json.paid order.paid
+    json.paid_online order.paid_online
+    json.will_pay_on_delivery order.will_pay_on_delivery
+    json.paid_on_delivery order.paid_on_delivery
     json.delivered order.delivered
     json.user_id order.user_id
     json.group_id order.group_id

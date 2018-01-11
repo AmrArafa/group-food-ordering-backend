@@ -4,7 +4,7 @@ class Admin::SessionsController < ApplicationController
     if @admin && @admin.authenticate(params[:password])
       render json: response_obj(@admin), status: :ok
     else
-      render json: {message: 'Invalid email/password/admin'}, status: :unauthorized
+      render json: {message: 'Invalid email/password'}, status: :unauthorized
     end
   end
 

@@ -3,8 +3,9 @@ class DeleteUnpaidSingleOrdersJob < ApplicationJob
 
   def perform(*args)
   		order = args[0]
-  		if order.paid == false
+      if order.paid_online == false && order.will_pay_on_delivery == false
       	order.destroy
+      elsif order.paid_online == false && order.will_pay_on_delivery == false
      	DeleteUnpaidSingleOrdersJob.set(wait: 10.minutes).perform_later(order)
      end
   end
