@@ -1,6 +1,28 @@
 class Admin::DashboardController < ApplicationController
     before_action :admin_authenticate_request!
 
+  def index 
+    @mostItem = Item.calculate_most_item_sold
+    @lessItem = Item.calculate_less_item_sold
+    @mostUser = User.most_user
+    @lessUser = User.less_user
+    @totalSold = Order.total_sold
+    @totalLastMonth = Order.total_sold_last_month
+    @tatalLastday = Order.total_sold_last_day
+    @tatalLasthour = Order.total_sold_last_hour
+
+    render :json => {
+               :mostItem => @mostItem, 
+               :lessItem => @lessItem,
+               :mostUser => @mostUser,
+               :lessUser => @lessUser,
+               :totalSold => @totalSold,
+               :totalLastMonth => @totalLastMonth,
+               :tatalLastday => @tatalLastday,
+               :tatalLasthour => @tatalLasthour
+               } 
+  end
+
 
   def mostItem
     @item = Item.calculate_most_item_sold
