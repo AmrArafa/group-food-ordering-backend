@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'soldlastday', to: 'dashboard#totalSoldLastday', defaults: {format: :json}
     get 'soldlasthour', to: 'dashboard#totalSoldLasthours', defaults: {format: :json}
     get '/admins/:invitation_token', to: 'admins#showbytoken', defaults: {format: :json}
+    get '/admins/admin/:id', to: 'admins#show', defaults: {format: :json}
     post 'invitations', to: 'invitations#create', defaults: {format: :json}
     post 'registrations/:invitation_token', to: 'registrations#update', defaults: {format: :json}
     post 'login', to: 'sessions#create', defaults: {format: :json}
