@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
     create_table :orders do |t|
         t.boolean :paid, default: false
         t.boolean :delivered, default: false
-        t.integer :user_id, default: 1
+        t.integer :user_id
 
         # t.belongs_to :user
         t.belongs_to :group

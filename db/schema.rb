@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171224142759) do
+ActiveRecord::Schema.define(version: 20180110102150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "email", null: false
+    t.string "password_digest"
+    t.string "invitation_token"
+    t.datetime "invited_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,12 +53,14 @@ ActiveRecord::Schema.define(version: 20171224142759) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.boolean "paid", default: false
+    t.boolean "paid_online", default: false
     t.boolean "delivered", default: false
-    t.integer "user_id", default: 1
+    t.integer "user_id"
     t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "will_pay_on_delivery", default: false
+    t.boolean "paid_on_delivery", default: false
     t.index ["group_id"], name: "index_orders_on_group_id"
   end
 
@@ -63,6 +68,7 @@ ActiveRecord::Schema.define(version: 20171224142759) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,32 +1,34 @@
 class OrdersController < ApplicationController
-  before_action :set_user
-  before_action :set_order, only: [:show, :showItem, :update, :destroy]
+  before_action :authenticate_request!, :current_user
+  before_action :set_user, except: [:index, :show, :create, :destroy, :update]
+  before_action :set_order, only: [:update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = @user.orders
+    @orders = if params[:user_id].present?
+                Order.of_user(params[:user_id])
+              else
+                Order.all
+              end
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = @user.orders.find(params[:id])
+    # @order = @user.orders.find(params[:id])
+    @order = Order.find(params[:id])
 
-    render json: @order, status: :ok
-
+    # render json: @order, status: :ok
   end
-
- 
 
   # POST /orders
   # POST /orders.json
   def create
-    @order = @user.orders.build order_params
+    @order = @current_user.orders.build order_params
 
     if @order.save
-      # render :show, status: :created, location: @order
-      render json: @order, status: :created
+
     else
       render json: @order.errors, status: :unprocessable_entity
     end
@@ -40,7 +42,9 @@ class OrdersController < ApplicationController
     else
       render json: @order.errors, status: :unprocessable_entity
     end
-
+    if @order.paid_online || @order.will_pay_on_delivery
+      OrderMailer.order_confirmation(@current_user.email, @current_user.first_name).deliver_now
+    end
   end
 
   # DELETE /orders/1
@@ -57,11 +61,11 @@ class OrdersController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = @user.orders.find(params[:id])
+      @order = Order.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:paid, :delivered, :user_id, :group_id, order_items_attributes: [:quantity, :item_id])
+      params.require(:order).permit(:paid_online, :will_pay_on_delivery, :paid_on_delivery, :delivered, :user_id, :group_id, order_items_attributes: [:item_id, :quantity])
     end
 end
