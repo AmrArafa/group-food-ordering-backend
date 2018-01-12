@@ -1,129 +1,147 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# # # This file should contain all the record creation needed to seed the database with its default values.
+# # # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# # #
+# # # Examples:
+# # #
+# # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# # #   Character.create(name: 'Luke', movie: movies.first)
 
 Item.create(
     :name => 'Chicken spring roll with soy sauce and sweet chili sauce',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3151/4389.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Chicken_spring_roll_with_soy_sauce_and_sweet_chili_sauce.jpg')),
     :price => 46.00
     )
 Item.create(
     :name => 'Chicken breaded kofta with pasta red sauce',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3150/4384.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Chicken_breaded_kofta_with_pasta_red_sauce.jpg')),
     :price => 59.00
     )
 Item.create(
     :name => 'Boneless chicken thigh with potato pure',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3149/4383.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Boneless_chicken_thigh_with_potato_pure.jpg')),
     :price => 68.00
     )
 Item.create(
     :name => 'Bechamil pasta with pane',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3144/4387.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Bechamil_pasta_with_pane.jpg')),
     :price => 68.00
     )
 Item.create(
     :name => 'Chicken Mushroom & Lemon Sauce, with Rice',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/2246/3208.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Chicken_Mushroom_&_Lemon_Sauce_with_Rice.jpg')),
     :price => 57.00
     )
 Item.create(
     :name => 'Bechamil pasta with green salad',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3146/4385.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Bechamil_past_with_green_salad.jpg')),
     :price => 73.00
     )
 Item.create(
     :name => 'Zucchini bechamel with white rice',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3145/4386.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Zucchini_bechamel_with_white_rice.jpg')),
     :price => 55.00
     )
 Item.create(
     :name => 'Meat mombar with baba ghanouj',
-    :image => 'https://www.getmumm.com/uploads/items/328x222/3141/4402.jpeg',
+    :image => File.open(File.join(Rails.root, '/image/Meat_mombar_with_baba_ghanouj.jpg')),
     :price => 61.00
     )
-User.create(
-    :first_name => 'Ahmed',
-    :last_name => 'Elanadoly',
-    :email => 'ahmedelanadoly@gmail.com'
+Admin.create(
+    :first_name => 'Bahia',
+    :last_name => 'El Sharkawy',
+    :email => 'bahia@almakinah.com',
+    :password => '123456789',
+    :password_confirmation => '123456789'
     )
-User.create(
-    :first_name => 'Moaz',
-    :last_name => 'Elnager',
-    :email => 'Moaz@gmail.com'
-    )
-User.create(
-    :first_name => 'Amr',
-    :last_name => 'Arafa',
-    :email => 'Amr@gmail.com'
-    )
-Group.create(
-    :creator_id => 1
-    )
-Group.create(
-    :creator_id => 1
-    )
-Group.create(
-    :creator_id => 1
-    )
-Order.create(
-    :user_id => 1,
-    :group_id => 1
-    )
-Order.create(
-    :user_id => 1,
-    :group_id => 3
-    )
-Order.create(
-    :user_id => 1,
-    :group_id => 2
-    )
-Oder.create(
-    :user_id => 2,
-    :group_id => 2
-    )
-OrderItem.create(
-    :order_id => 1,
-    :item_id => 1,
-    :quantity => 4
-    )
-OrderItem.create(
-    :order_id => 1,
-    :item_id => 2,
-    :quantity => 3
-    )
-OrderItem.create(
-    :order_id => 1,
-    :item_id => 3,
-    :quantity => 1
-    )
-OrderItem.create(
-    :order_id => 2,
-    :item_id => 4,
-    :quantity => 1
-    )
-OrderItem.create(
-    :order_id => 2,
-    :item_id => 5,
-    :quantity => 6
-    )
-OrderItem.create(
-    :order_id => 3,
-    :item_id => 1,
-    :quantity => 2
-    )
-OrderItem.create(
-    :order_id => 3,
-    :item_id => 4,
-    :quantity => 5
-    )
-OrderItem.create(
-    :order_id => 3,
-    :item_id => 7,
-    :quantity => 1
-    )
+# # User.create(
+# #     :first_name => 'Ahmed',
+# #     :last_name => 'Elanadoly',
+# #     :email => 'ahmedelanadoly@gmil.com',
+# #     :password => '123456',
+# #     :password_confirmation => '123456'
+# #     )
+# # User.create(
+# #     :first_name => 'Ahmed',
+# #     :last_name => 'Elanadoly',
+# #     :email => 'ahmedelanadoly@gmail.com'
+# #     )
+# # User.create(
+# #     :first_name => 'Moaz',
+# #     :last_name => 'Elnager',
+# #     :email => 'Moaz@gmail.com'
+# #     )
+# # User.create(
+# #     :first_name => 'Amr',
+# #     :last_name => 'Arafa',
+# #     :email => 'Amr@gmail.com'
+# #     )
+# # Group.create(
+# #     :creator_id => 1
+# #     )
+# # Group.create(
+# #     :creator_id => 1
+# #     )
+# # Group.create(
+# #     :creator_id => 1
+# #     )
+# Order.create(
+#     :user_id => 1,
+#     :group_id => 1,
+#     :will_pay_on_delivery => true
+#     )
+# Order.create(
+#     :user_id => 1,
+#     :group_id => 3,
+#     :will_pay_on_delivery => true
+#     )
+# Order.create(
+#     :user_id => 1,
+#     :group_id => 2,
+#     :will_pay_on_delivery => true
+#     )
+# Order.create(
+#     :user_id => 2,
+#     :group_id => 2,
+#     :will_pay_on_delivery => true
+#     )
+# OrderItem.create(
+#     :order_id => 35,
+#     :item_id => 15,
+#     :quantity => 4
+#     )
+# OrderItem.create(
+#     :order_id => 34,
+#     :item_id => 16,
+#     :quantity => 3
+#     )
+# OrderItem.create(
+#     :order_id => 36,
+#     :item_id => 14,
+#     :quantity => 10
+#     )
+# OrderItem.create(
+#     :order_id => 34,
+#     :item_id => 12,
+#     :quantity => 1
+#     )
+# OrderItem.create(
+#     :order_id => 35,
+#     :item_id => 17,
+#     :quantity => 6
+#     )
+# OrderItem.create(
+#     :order_id => 36,
+#     :item_id => 9,
+#     :quantity => 2
+#     )
+# OrderItem.create(
+#     :order_id => 35,
+#     :item_id => 12,
+#     :quantity => 5
+#     )
+# OrderItem.create(
+#     :order_id => 34,
+#     :item_id => 11,
+#     :quantity => 1
+#     )
 
