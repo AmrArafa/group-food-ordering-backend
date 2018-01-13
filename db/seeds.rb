@@ -47,9 +47,9 @@ Item.create(
     :price => 61.00
     )
 Admin.create(
-    :first_name => 'Ahmed',
-    :last_name => 'Elanadoly',
-    :email => 'ahmedelanadoly@gmail.com',
+    :first_name => 'Bahia',
+    :last_name => 'El Sharkawy',
+    :email => 'bahia@almakinah.com',
     :password => '123456789',
     :password_confirmation => '123456789'
     )
@@ -105,42 +105,42 @@ Admin.create(
 #     :will_pay_on_delivery => true
 #     )
 # OrderItem.create(
-#     :order_id => 33,
+#     :order_id => 35,
 #     :item_id => 15,
 #     :quantity => 4
 #     )
 # OrderItem.create(
-#     :order_id => 33,
+#     :order_id => 34,
 #     :item_id => 16,
 #     :quantity => 3
 #     )
 # OrderItem.create(
-#     :order_id => 32,
+#     :order_id => 36,
 #     :item_id => 14,
 #     :quantity => 10
 #     )
 # OrderItem.create(
-#     :order_id => 31,
+#     :order_id => 34,
 #     :item_id => 12,
 #     :quantity => 1
 #     )
 # OrderItem.create(
-#     :order_id => 32,
+#     :order_id => 35,
 #     :item_id => 17,
 #     :quantity => 6
 #     )
 # OrderItem.create(
-#     :order_id => 33,
+#     :order_id => 36,
 #     :item_id => 9,
 #     :quantity => 2
 #     )
 # OrderItem.create(
-#     :order_id => 32,
+#     :order_id => 35,
 #     :item_id => 12,
 #     :quantity => 5
 #     )
 # OrderItem.create(
-#     :order_id => 31,
+#     :order_id => 34,
 #     :item_id => 11,
 #     :quantity => 1
 #     )

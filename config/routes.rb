@@ -21,20 +21,22 @@ Rails.application.routes.draw do
   post 'signup', to: 'registrations#create', defaults: {format: :json}
   post 'login', to: 'sessions#create', defaults: {format: :json}
   namespace :admin do
-    get 'dashboard', to: 'dashboard#index'
-    get 'mostitem', to: 'dashboard#mostItem'
-    get 'lessitem', to: 'dashboard#lessItem'
-    get 'mostuser', to: 'dashboard#mostUser'
-    get 'lessuser', to: 'dashboard#lessUser'
-    get 'totalsold', to: 'dashboard#totalSold'
-    get 'soldlastmonth', to: 'dashboard#totalSoldLastMonth'
-    get 'soldlastday', to: 'dashboard#totalSoldLastday'
-    get 'soldlasthour', to: 'dashboard#totalSoldLasthours'
-    get '/admins/:invitation_token', to: 'admins#showbytoken'
-    post 'invitations', to: 'invitations#create'
+    get 'orders/filter/:created_at', to: 'orders#filter', defaults: {format: :json}
+    get 'dashboard', to: 'dashboard#index', defaults: {format: :json}
+    get 'mostitem', to: 'dashboard#mostItem', defaults: {format: :json}
+    get 'lessitem', to: 'dashboard#lessItem', defaults: {format: :json}
+    get 'mostuser', to: 'dashboard#mostUser', defaults: {format: :json}
+    get 'lessuser', to: 'dashboard#lessUser', defaults: {format: :json}
+    get 'totalsold', to: 'dashboard#totalSold', defaults: {format: :json}
+    get 'soldlastmonth', to: 'dashboard#totalSoldLastMonth', defaults: {format: :json}
+    get 'soldlastday', to: 'dashboard#totalSoldLastday', defaults: {format: :json}
+    get 'soldlasthour', to: 'dashboard#totalSoldLasthours', defaults: {format: :json}
+    get '/admins/:invitation_token', to: 'admins#showbytoken', defaults: {format: :json}
+    get '/admins/admin/:id', to: 'admins#show', defaults: {format: :json}
+    post 'invitations', to: 'invitations#create', defaults: {format: :json}
     post 'registrations/:invitation_token', to: 'registrations#update', defaults: {format: :json}
     post 'login', to: 'sessions#create', defaults: {format: :json}
-    get '/', to: 'admin#index'
+    get '/', to: 'admin#index', defaults: {format: :json}
     resources :admins, defaults: {format: :json}
     resources :items, defaults: {format: :json}
     resources :groups, defaults: {format: :json}
