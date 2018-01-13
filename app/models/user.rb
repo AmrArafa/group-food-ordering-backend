@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :orders, dependent: :destroy
     has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
     has_many :groups, through: :orders
+    has_many :notifications, as: :recipient
 
     validates :email, :first_name, :last_name,  presence: true
     validates :email, uniqueness: true

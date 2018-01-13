@@ -80,4 +80,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.websocket_server_url = 'wss://<YOUR_SERVER_SITE>/cable'
+  config.action_cable.allowed_request_origins = [
+   # Address of our Ruby on Rails App
+  'https://<YOUR_SERVER_SITE>',
+   # Address of our JS App
+  'https://<YOUR_CLIENT_SITE>',
+  ]
 end
