@@ -58,6 +58,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "group-food-ordering-backend_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { :host => 'https://ordering-food-app.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -86,11 +87,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.websocket_server_url = 'wss://<YOUR_SERVER_SITE>/cable'
+  # config.websocket_server_url = 'wss://<YOUR_SERVER_SITE>/cable'
   config.action_cable.allowed_request_origins = [
    # Address of our Ruby on Rails App
-  'https://<YOUR_SERVER_SITE>',
+  'https://<YOUR_SERVER_SITE>'
    # Address of our JS App
-  'https://<YOUR_CLIENT_SITE>',
+  # 'https://<YOUR_CLIENT_SITE>',
   ]
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
+  user_name:            ENV['GMAIL_USERNAME'],
+  password:             ENV['GMAIL_PASSWORD'],
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 end
