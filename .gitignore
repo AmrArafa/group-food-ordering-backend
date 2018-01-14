@@ -20,3 +20,6 @@
 .byebug_history
 .ruby-gemset
 .ruby-version
+
+# Ignore application configuration
+/config/application.yml
