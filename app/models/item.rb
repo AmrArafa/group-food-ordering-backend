@@ -51,7 +51,7 @@ class Item < ApplicationRecord
         itemsQuantity << currentItem
       end
       
-      min = {"item"=>{}, "quantity"=>100000}
+      min = {"item"=>{}, "quantity"=>0}
       i = 0
       while i < itemsQuantity.length
         if itemsQuantity[i]['quantity'] <= min['quantity']

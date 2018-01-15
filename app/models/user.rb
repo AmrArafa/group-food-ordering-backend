@@ -35,9 +35,9 @@ class User < ApplicationRecord
             lessUser << currentUserOrders
         end
         i = 0
-        minOrders = {"user"=>{}, "orderCount"=>1000000 }
+        minOrders = {"user"=>{}, "orderCount"=>0 }
         while i < lessUser.length
-            if lessUser[i]['orderCount'] < minOrders['orderCount']
+            if lessUser[i]['orderCount'] <= minOrders['orderCount']
           minOrders = lessUser[i]
         end
           i +=1
