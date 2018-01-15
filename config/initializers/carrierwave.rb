@@ -1,5 +1,6 @@
 require "carrierwave/storage/fog"
 
+
 CarrierWave.configure do |config|
   config.root = Rails.root.join("tmp")
   config.cache_dir ='carrierwave'
@@ -11,7 +12,7 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV["AWS_SECRET_KEY"], 
     region:                'eu-central-1'       # required
   }
-  config.fog_directory  = ENV["ordering-food"]              # required'
+  config.fog_directory  = ENV["AWS_BUCKET"]              # required'
   config.fog_public = false
   config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
 end

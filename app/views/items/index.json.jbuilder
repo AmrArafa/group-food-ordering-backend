@@ -6,7 +6,7 @@ json.array! @items do |item|
     json.image item.image
     json.price item.price
     json.created_at item.created_at
-    json.image_url "https://ordering-food-app.herokuapp.com/#{item.image.url}"
+    json.image_url "https://ordering-food-app.herokuapp.com#{item.image.url}"
 
 
 end
