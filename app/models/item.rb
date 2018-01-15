@@ -36,6 +36,7 @@ class Item < ApplicationRecord
       return (max)      
     end
     def self.calculate_less_item_sold
+      return {"item"=>{}, "quantity"=>0} if Item.count === 0
       itemsQuantity = []
       Item.all.each do |item|
         totalQuantity = 0

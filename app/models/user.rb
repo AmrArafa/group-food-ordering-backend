@@ -29,13 +29,14 @@ class User < ApplicationRecord
         return (maxOrders)
     end
     def self.less_user
+        return {"user"=>{}, "orderCount"=>0} if User.count === 0
         lessUser = []
         User.all.each do |user|
             currentUserOrders = {"user" => user, "orderCount" => user.orders.count}
             lessUser << currentUserOrders
         end
         i = 0
-        minOrders = {"user"=>{}, "orderCount"=>0 }
+        minOrders = {"user"=>{}, "orderCount"=>1000000000000 }
         while i < lessUser.length
             if lessUser[i]['orderCount'] <= minOrders['orderCount']
           minOrders = lessUser[i]
