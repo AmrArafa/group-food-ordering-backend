@@ -90,7 +90,7 @@ Rails.application.configure do
   # config.websocket_server_url = 'wss://<YOUR_SERVER_SITE>/cable'
   config.action_cable.allowed_request_origins = [
    # Address of our Ruby on Rails App
-  'https://<YOUR_SERVER_SITE>'
+  'https://group-food-ordering.herokuapp.com'
    # Address of our JS App
   # 'https://<YOUR_CLIENT_SITE>',
   ]
